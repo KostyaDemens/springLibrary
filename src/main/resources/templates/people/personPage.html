@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+</head>
+<body>
+<div>
+    <p th:text="${person.name} + ', ' + ${person.birthYear}"></p>
+
+    <br/>
+
+    <p th:if="${person.books eq null}">Человек пока не взял ни одной книги</p>
+
+    <button th:action="@{/people/{id}(id=${person.id})/edit}" value="Редактировать"></button>
+    <button th:action="@{/people/delete}" value=Удалить""></button>
+</div>
+</body>
+</html>
