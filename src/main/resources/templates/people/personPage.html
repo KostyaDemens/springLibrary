@@ -10,16 +10,23 @@
 
     <br/>
 
-    <p th:if="${person.books eq null}">Человек пока не взял ни одной книги</p>
-
-    <div th:if="${person.books ne null}" th:each="book : ${person.books}">
-        <!--        <p th:text="${book.}"-->
+    <div th:if="${#lists.isEmpty(person.books)}">
+        <p>Человек пока не взял ни одной книги</p>
+        <hr/>
     </div>
+
+    <div th:unless="${#lists.isEmpty(person.books)}" th:each="book : ${person.books}">
+        <hr/>
+        <p style="font-weight: bold">Книги:</p>
+        <p th:text="${book.name} + ', ' ${book.author} + ', ' + ${book.publishYear}"></p>
+        <hr/>
+    </div>
+
 
     <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.id})}">
         <input type="submit" value="Редактировать">
     </form>
-    <form th:method="DELETE" th:action="@{/people/delete}">
+    <form th:method="DELETE" th:action="@{/people/delete/{id}(id=${person.id})}">
         <input type="submit" value="Удалить">
     </form>
 </div>

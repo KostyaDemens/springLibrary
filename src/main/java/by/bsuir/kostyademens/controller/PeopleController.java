@@ -47,8 +47,14 @@ public class PeopleController {
     }
 
     @PatchMapping("/{id}")
-    public String editNewUser(Person person, @PathVariable("id") Long id) {
+    public String editNewPerson(Person person, @PathVariable("id") Long id) {
         peopleService.update(id, person);
+        return "redirect:/people";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String deletePerson(@PathVariable("id") Long id) {
+        peopleService.delete(id);
         return "redirect:/people";
     }
 }
