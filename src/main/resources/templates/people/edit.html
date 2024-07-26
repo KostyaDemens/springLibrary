@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:action="@{/people/{id}(id=${id})}" th:method="PATCH" th:object="${person}">
+<form th:action="@{/people/{id}(id=${person.id})}" th:method="PATCH" th:object="${person}">
     <label for="name">Введите ФИО: </label>
     <input type="text" id="name" th:field="*{name}"/>
 
@@ -17,7 +17,7 @@
 
     <br/>
 
-    <input type="submit" value="Добавить!">
+    <input type="submit" value="Отредактировать!">
 </form>
 </body>
 </html>

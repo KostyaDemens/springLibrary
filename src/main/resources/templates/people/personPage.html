@@ -12,8 +12,16 @@
 
     <p th:if="${person.books eq null}">Человек пока не взял ни одной книги</p>
 
-    <button th:action="@{/people/{id}(id=${person.id})/edit}" value="Редактировать"></button>
-    <button th:action="@{/people/delete}" value=Удалить""></button>
+    <div th:if="${person.books ne null}" th:each="book : ${person.books}">
+        <!--        <p th:text="${book.}"-->
+    </div>
+
+    <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.id})}">
+        <input type="submit" value="Редактировать">
+    </form>
+    <form th:method="DELETE" th:action="@{/people/delete}">
+        <input type="submit" value="Удалить">
+    </form>
 </div>
 </body>
 </html>
