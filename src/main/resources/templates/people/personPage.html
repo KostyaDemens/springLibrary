@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Домашняя страница</title>
+    <title>Страница пользователя</title>
 </head>
 <body>
 <div>
@@ -15,11 +15,13 @@
         <hr/>
     </div>
 
-    <div th:unless="${#lists.isEmpty(person.books)}" th:each="book : ${person.books}">
-        <hr/>
-        <p style="font-weight: bold">Книги:</p>
-        <p th:text="${book.name} + ', ' ${book.author} + ', ' + ${book.publishYear}"></p>
-        <hr/>
+    <div th:if="${not #lists.isEmpty(person.books)}">
+            <hr/>
+            <p style="font-weight: bold">Книги:</p>
+        <div th:each="book : ${person.books}">
+            <p th:text="${book.title} + ', ' + ${book.author} + ', ' + ${book.publishYear}"></p>
+        </div>
+            <hr/>
     </div>
 
 

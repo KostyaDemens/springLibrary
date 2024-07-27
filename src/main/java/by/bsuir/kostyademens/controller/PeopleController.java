@@ -47,7 +47,7 @@ public class PeopleController {
     }
 
     @PatchMapping("/{id}")
-    public String editNewPerson(Person person, @PathVariable("id") Long id) {
+    public String editPerson(Person person, @PathVariable("id") Long id) {
         peopleService.update(id, person);
         return "redirect:/people";
     }
